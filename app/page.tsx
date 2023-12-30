@@ -1,9 +1,9 @@
-
+import ChatIndex from '../container/chatIndex'
 
 export default function Home() {
   return (
     <div>
-      <h1>Hello</h1>
+      <ChatIndex />
     </div>
   )
 }
