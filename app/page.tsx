@@ -2,7 +2,7 @@ import ChatIndex from '../container/chatIndex'
 
 export default function Home() {
   return (
-    <div>
+    <div className='flex justify-center items-center h-screen'>
       <ChatIndex />
     </div>
   )
