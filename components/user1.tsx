@@ -2,8 +2,11 @@ import React from 'react'
 
 function User1() {
     return (
-        <div>User1</div>
+        <div>
+            <p>User 2</p>
+            <textarea placeholder="Mesajınızı yazın..." className="flex-1 p-2 border rounded-md"></textarea>
+        </div>
     )
 }
 
-export default User1
+export default User1;
