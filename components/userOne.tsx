@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 
-function UserOne() {
+function UserOne({ message }: any) {
 
     const [time, setTime] = useState(new Date());
 
