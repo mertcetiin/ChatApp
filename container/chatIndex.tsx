@@ -5,7 +5,7 @@ import React from 'react'
 
 function ChatIndex() {
     return (
-        <div className="font-sans">
+        <div className="font-san">
             <div className="">
                 <div className="bg-teal-500 text-white p-4 flex items-center justify-between">
                     <span className="text-lg font-semibold">Chat App</span>
