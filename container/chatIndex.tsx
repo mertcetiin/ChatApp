@@ -1,6 +1,6 @@
 import InputIndex from '@/components/inputIndex';
-import User1 from '@/components/user1';
-import User2 from '@/components/user2';
+import UserOne from '@/components/userOne';
+import UserTwo from '@/components/userTwo';
 import React from 'react'
 
 function ChatIndex() {
@@ -11,8 +11,8 @@ function ChatIndex() {
                     <span className="text-lg font-semibold">Chat App</span>
                 </div>
                 <div className="p-4 flex items-center">
-                    <User1 />
-                    <User2 />
+                    <UserOne />
+                    <UserTwo />
                 </div>
             </div>
             <InputIndex />

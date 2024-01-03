@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 
-function User2() {
+function UserOne() {
 
     const [time, setTime] = useState(new Date());
 
@@ -20,14 +20,15 @@ function User2() {
     let formattedMinutes = minutesTime < 10 ? `0${minutesTime}` : minutesTime;
 
     return (
-        <div>
-            <p>User 2</p>
-            <div>
-                <textarea placeholder="Mesajınızı yazın..." className="flex-1 p-2 border rounded-md"></textarea>
-                <p>{formattedHours}:{formattedMinutes}</p>
+        <div className="flex items-end">
+            <div className="bg-gray-400 text-white p-2 rounded-lg mb-2 max-w-2/3">
+                <div className="flex items-center">
+                    <p className="text-sm flex-1">User 1</p>
+                    <p className="mt-6 ml-2 text-xs">{formattedHours}:{formattedMinutes}</p>
+                </div>
             </div>
         </div>
     )
 }
 
-export default User2;
+export default UserOne;
