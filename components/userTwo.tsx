@@ -20,14 +20,12 @@ function UserTwo() {
     let formattedMinutes = minutesTime < 10 ? `0${minutesTime}` : minutesTime;
 
     return (
-        <div className="flex items-end ml-32">
-            <div className="bg-green-500 text-white p-2 rounded-lg mb-2 max-w-2/3">
-                <div className="flex items-center">
-                    <p className="text-sm flex-1">User 2</p>
-                    <p className="mt-6 ml-2 text-xs">{formattedHours}:{formattedMinutes}</p>
-                </div>
+        <li className="flex justify-end">
+            <div className="relative max-w-xl px-4 py-2 text-gray-700 bg-gray-100 rounded shadow">
+                <span className="block">Hiiii</span>
+                <p className="ml-4 text-xs">{formattedHours}:{formattedMinutes}</p>
             </div>
-        </div>
+        </li>
     )
 }
 

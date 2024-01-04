@@ -20,15 +20,14 @@ function UserOne() {
     let formattedMinutes = minutesTime < 10 ? `0${minutesTime}` : minutesTime;
 
     return (
-        <div className="flex items-end">
-            <div className="bg-gray-400 text-white p-2 rounded-lg mb-2 w-30">
-                <div className="flex items-center">
-                    <p className="text-sm flex-1">User 1</p>
-                    <p className="mt-6 ml-2 text-xs">{formattedHours}:{formattedMinutes}</p>
-                </div>
+        <li className="flex justify-start">
+            <div className="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow">
+                <span className="block">Hi</span>
+                <p className="ml-4 text-xs">{formattedHours}:{formattedMinutes}</p>
             </div>
-        </div>
+        </li>
     )
 }
+
 
 export default UserOne;
