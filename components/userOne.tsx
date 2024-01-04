@@ -21,7 +21,7 @@ function UserOne() {
 
     return (
         <div className="flex items-end">
-            <div className="bg-gray-400 text-white p-2 rounded-lg mb-2 max-w-2/3">
+            <div className="bg-gray-400 text-white p-2 rounded-lg mb-2 w-30">
                 <div className="flex items-center">
                     <p className="text-sm flex-1">User 1</p>
                     <p className="mt-6 ml-2 text-xs">{formattedHours}:{formattedMinutes}</p>
