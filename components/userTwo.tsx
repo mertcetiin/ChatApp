@@ -22,7 +22,7 @@ function UserTwo() {
     return (
         <li className="flex justify-end">
             <div className="relative max-w-xl px-4 py-2 text-gray-700 bg-gray-100 rounded shadow">
-                <span className="block">Hiiii</span>
+                <span className="block">Hiiii!!</span>
                 <p className="ml-4 text-xs">{formattedHours}:{formattedMinutes}</p>
             </div>
         </li>

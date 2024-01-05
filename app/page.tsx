@@ -1,3 +1,4 @@
+"use client"
 import HeaderIndex from "@/components/headerIndex";
 import ProfileIndex from "@/components/profileIndex";
 import UserOne from "@/components/userOne";
@@ -6,6 +7,8 @@ import InputIndex from "@/components/inputIndex";
 
 
 export default function Home() {
+
+
   return (
     <div className="container mx-auto">
       <div className="min-w-full border rounded mt-6">
