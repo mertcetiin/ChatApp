@@ -15,9 +15,10 @@ function HeaderIndex() {
 
     }
 
+
     return (
         <div className="relative flex items-center justify-center p-3 border-b border-gray-300">
-            <button onClick={signInWithGoogle} className="block ml-2 font-bold text-gray-600">{`${auth.currentUser ? 'Log in' : 'Log out'}`}</button>
+            <button onClick={signInWithGoogle} className="block ml-2 font-bold text-gray-600">{`${auth.currentUser ? 'Log out' : 'Log in'}`}</button>
         </div>
     )
 }

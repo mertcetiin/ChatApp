@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 
-function UserOne() {
+function UserOne({ messages }: any) {
 
     const [time, setTime] = useState(new Date());
 
@@ -22,7 +22,9 @@ function UserOne() {
     return (
         <li className="flex justify-start">
             <div className="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow">
-                <span className="block">Hi</span>
+                {messages.map((message: any) =>
+                    <span className="block">{message.text}</span>
+                )}
                 <p className="ml-4 text-xs">{formattedHours}:{formattedMinutes}</p>
             </div>
         </li>

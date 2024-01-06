@@ -1,13 +1,25 @@
 "use client";
-import { useState } from "react";
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { useState, useEffect } from "react";
+import { addDoc, collection, serverTimestamp, onSnapshot, query } from 'firebase/firestore';
 import { auth, db } from "@/lib/firebase";
 
 function InputIndex() {
 
     const [newMessage, setNewMessage] = useState('');
+    // const [messages, setMessages] = useState([]);
 
     const messagesRef = collection(db, 'messages')
+
+    // useEffect(() => {
+    //     const queryMessages = query(messagesRef)
+    //     onSnapshot(queryMessages, (snapshot) => {
+    //         let messages: any = [];
+    //         snapshot.forEach((doc) => {
+    //             messages.push({ ...doc.data(), id: doc.id })
+    //         });
+    //         setMessages(messages)
+    //     });
+    // }, [])
 
     const user = auth.currentUser;
     const userName = user ? user.displayName : "Anonymous";
@@ -26,6 +38,7 @@ function InputIndex() {
 
     return (
         <form onSubmit={handleSubmit}>
+            {/* <div>{messages.map((message: any) => <h1>{message.text}</h1>)}</div>*/}
             <div className="flex items-center justify-between w-full p-3 border-t border-gray-300">
                 <input type="text"
                     onChange={(e) => setNewMessage(e.target.value)}
