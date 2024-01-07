@@ -1,10 +1,21 @@
+"use client";
+import { useEffect, useState } from 'react';
 import { auth } from "@/lib/firebase";
+import { User } from 'firebase/auth';
 
 
 function ProfileIndex() {
+    const [user, setUser] = useState<User | null>(auth.currentUser);
 
-    const user = auth.currentUser;
-    const userName = user ? user.displayName : "Anonymous";
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((authUser) => {
+            setUser(authUser);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const userName = user ? user.displayName : 'Anonymous';
 
     return (
         <div className="relative flex items-center p-3 border-b border-gray-300">

@@ -1,14 +1,14 @@
-"use client";
-import { useState, useEffect } from "react";
-import { addDoc, collection, serverTimestamp, onSnapshot, query } from 'firebase/firestore';
-import { auth, db } from "@/lib/firebase";
+// "use client";
+// import { useState, useEffect } from "react";
+// import { addDoc, collection, serverTimestamp, onSnapshot, query } from 'firebase/firestore';
+// import { auth, db } from "@/lib/firebase";
 
-function InputIndex() {
+function InputIndex({ newMessage, setNewMessage, handleSubmit }: any) {
 
-    const [newMessage, setNewMessage] = useState('');
+    // const [newMessage, setNewMessage] = useState('');
     // const [messages, setMessages] = useState([]);
 
-    const messagesRef = collection(db, 'messages')
+    // const messagesRef = collection(db, 'messages')
 
     // useEffect(() => {
     //     const queryMessages = query(messagesRef)
@@ -21,24 +21,23 @@ function InputIndex() {
     //     });
     // }, [])
 
-    const user = auth.currentUser;
-    const userName = user ? user.displayName : "Anonymous";
+    // const user = auth.currentUser;
+    // const userName = user ? user.displayName : "Anonymous";
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-        if (newMessage === '') return;
+    // const handleSubmit = async (e: any) => {
+    //     e.preventDefault();
+    //     if (newMessage === '') return;
 
-        await addDoc(messagesRef, {
-            text: newMessage,
-            createdAt: serverTimestamp(),
-            user: userName,
-        });
-        setNewMessage('')
-    }
+    //     await addDoc(messagesRef, {
+    //         text: newMessage,
+    //         createdAt: serverTimestamp(),
+    //         user: userName,
+    //     });
+    //     setNewMessage('')
+    // }
 
     return (
         <form onSubmit={handleSubmit}>
-            {/* <div>{messages.map((message: any) => <h1>{message.text}</h1>)}</div>*/}
             <div className="flex items-center justify-between w-full p-3 border-t border-gray-300">
                 <input type="text"
                     onChange={(e) => setNewMessage(e.target.value)}

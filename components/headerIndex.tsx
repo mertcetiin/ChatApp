@@ -1,24 +1,38 @@
-import React from 'react'
+"use client";
+import { useState, useEffect } from 'react'
 import { auth, provider } from '../lib/firebase';
-import { signInWithPopup } from 'firebase/auth';
-
+import { User, signInWithPopup, signOut } from 'firebase/auth';
 
 function HeaderIndex() {
 
-    const signInWithGoogle = async () => {
+    const [user, setUser] = useState<User | null>(null);
 
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((authUser) => {
+            setUser(authUser);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const signInWithGoogle = async () => {
         try {
-            const result = await signInWithPopup(auth, provider);
+            if (user) {
+                await signOut(auth);
+            } else {
+                await signInWithPopup(auth, provider);
+            }
         } catch (err) {
-            console.log(err)
+            console.error(err);
         }
 
     }
 
-
     return (
         <div className="relative flex items-center justify-center p-3 border-b border-gray-300">
-            <button onClick={signInWithGoogle} className="block ml-2 font-bold text-gray-600">{`${auth.currentUser ? 'Log out' : 'Log in'}`}</button>
+            <button onClick={signInWithGoogle} className="block ml-2 font-bold text-gray-600">
+                {user ? `Log out` : 'Log in'}
+            </button>
         </div>
     )
 }
