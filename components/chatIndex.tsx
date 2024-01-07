@@ -9,7 +9,6 @@ function ChatIndex({ messages }: any) {
                 <div key={message.id}>
                     {message.user === "user1" ? (
                         <UserTwo message={message} />
-
                     ) : (
                         <UserOne message={message} />
                     )}

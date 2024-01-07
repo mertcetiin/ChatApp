@@ -2,11 +2,12 @@
 import HeaderIndex from "@/components/headerIndex";
 import ProfileIndex from "@/components/profileIndex";
 import InputIndex from "@/components/inputIndex";
+import ChatIndex from "@/components/chatIndex";
 
 import { useEffect, useState } from "react";
 import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from "@/lib/firebase";
-import ChatIndex from "@/components/chatIndex";
+
 
 export default function Home() {
 
@@ -26,7 +27,7 @@ export default function Home() {
     });
 
     return () => unsuscribe()
-  }, [])
+  }, [messagesRef])
 
   const user = auth.currentUser;
   const userName = user ? user.displayName : "Anonymous";
@@ -54,7 +55,7 @@ export default function Home() {
 
             <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
               <ul className="space-y-2">
-                <ChatIndex messages={messages} />
+                {user ? <ChatIndex messages={messages} /> : ''}
               </ul>
             </div>
             <InputIndex newMessage={newMessage} setNewMessage={setNewMessage} handleSubmit={handleSubmit} />
