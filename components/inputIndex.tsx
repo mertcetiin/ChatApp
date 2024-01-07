@@ -1,40 +1,5 @@
-// "use client";
-// import { useState, useEffect } from "react";
-// import { addDoc, collection, serverTimestamp, onSnapshot, query } from 'firebase/firestore';
-// import { auth, db } from "@/lib/firebase";
 
 function InputIndex({ newMessage, setNewMessage, handleSubmit }: any) {
-
-    // const [newMessage, setNewMessage] = useState('');
-    // const [messages, setMessages] = useState([]);
-
-    // const messagesRef = collection(db, 'messages')
-
-    // useEffect(() => {
-    //     const queryMessages = query(messagesRef)
-    //     onSnapshot(queryMessages, (snapshot) => {
-    //         let messages: any = [];
-    //         snapshot.forEach((doc) => {
-    //             messages.push({ ...doc.data(), id: doc.id })
-    //         });
-    //         setMessages(messages)
-    //     });
-    // }, [])
-
-    // const user = auth.currentUser;
-    // const userName = user ? user.displayName : "Anonymous";
-
-    // const handleSubmit = async (e: any) => {
-    //     e.preventDefault();
-    //     if (newMessage === '') return;
-
-    //     await addDoc(messagesRef, {
-    //         text: newMessage,
-    //         createdAt: serverTimestamp(),
-    //         user: userName,
-    //     });
-    //     setNewMessage('')
-    // }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -51,7 +16,6 @@ function InputIndex({ newMessage, setNewMessage, handleSubmit }: any) {
                             d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                     </svg>
                 </button>
-
             </div>
         </form>
     )

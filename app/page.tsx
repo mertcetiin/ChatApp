@@ -1,13 +1,12 @@
 "use client"
 import HeaderIndex from "@/components/headerIndex";
 import ProfileIndex from "@/components/profileIndex";
-import UserOne from "@/components/userOne";
-import UserTwo from "@/components/userTwo";
 import InputIndex from "@/components/inputIndex";
 
 import { useEffect, useState } from "react";
 import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from "@/lib/firebase";
+import ChatIndex from "@/components/chatIndex";
 
 export default function Home() {
 
@@ -55,8 +54,7 @@ export default function Home() {
 
             <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
               <ul className="space-y-2">
-                <UserOne messages={messages} />
-                <UserTwo />
+                <ChatIndex messages={messages} />
               </ul>
             </div>
             <InputIndex newMessage={newMessage} setNewMessage={setNewMessage} handleSubmit={handleSubmit} />
