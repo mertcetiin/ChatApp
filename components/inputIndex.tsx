@@ -1,14 +1,28 @@
 
-function InputIndex({ newMessage, setNewMessage, handleSubmit }: any) {
+function InputIndex({ newMessage, setNewMessage, handleSubmit, user }: any) {
 
     return (
         <form onSubmit={handleSubmit}>
             <div className="flex items-center justify-between w-full p-3 border-t border-gray-300">
-                <input type="text"
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    value={newMessage}
-                    className="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"
-                    name="message" required placeholder="Message..." />
+                {user ? (
+                    <input
+                        type="text"
+                        onChange={(e) => setNewMessage(e.target.value)}
+                        value={newMessage}
+                        className="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"
+                        name="message"
+                        required
+                        placeholder="Message..."
+                    />
+                ) : (
+                    <input
+                        type="text"
+                        className="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"
+                        name="message"
+                        placeholder="Login to send messages..."
+                        disabled
+                    />
+                )}
                 <button type="submit">
                     <svg className="w-5 h-5 text-gray-500 origin-center transform rotate-90" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20" fill="currentColor">

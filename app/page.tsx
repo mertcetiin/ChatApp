@@ -58,7 +58,7 @@ export default function Home() {
                 {user ? <ChatIndex messages={messages} /> : ''}
               </ul>
             </div>
-            <InputIndex newMessage={newMessage} setNewMessage={setNewMessage} handleSubmit={handleSubmit} />
+            <InputIndex user={user} newMessage={newMessage} setNewMessage={setNewMessage} handleSubmit={handleSubmit} />
           </div>
         </div>
       </div>
