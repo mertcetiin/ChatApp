@@ -1,4 +1,3 @@
-"use client";
 
 function UserOne({ message }: any) {
 

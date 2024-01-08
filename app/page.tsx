@@ -11,9 +11,10 @@ import { auth, db } from "@/lib/firebase";
 
 export default function Home() {
 
+  const [user, setUser] = useState(auth.currentUser || null);
   const [newMessage, setNewMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const [user, setUser] = useState(auth.currentUser);
+
 
   const messagesRef = collection(db, 'messages');
 
@@ -27,6 +28,7 @@ export default function Home() {
 
   useEffect(() => {
     const queryMessages = query(messagesRef, orderBy('createdAt'))
+
     const unsuscribe = onSnapshot(queryMessages, (snapshot) => {
       let messages: any = [];
       snapshot.forEach((doc) => {
@@ -41,14 +43,20 @@ export default function Home() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     if (newMessage === '') return;
 
-    await addDoc(messagesRef, {
-      text: newMessage,
-      createdAt: serverTimestamp(),
-      user: user ? user.displayName || "Anonymous" : "Anonymous",
-    });
-    setNewMessage('')
+    try {
+      await addDoc(messagesRef, {
+        text: newMessage,
+        createdAt: serverTimestamp(),
+        user: user ? user.displayName || "Anonymous" : "Anonymous",
+      });
+      setNewMessage('')
+    } catch (error) {
+      console.error('Message could not be added:', error)
+    }
+
   }
 
   return (
@@ -58,13 +66,18 @@ export default function Home() {
           <div className="w-full">
             <HeaderIndex user={user} />
 
-            <ProfileIndex />
+            <ProfileIndex user={user} />
             <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
               <ul className="space-y-2">
-                {user ? <ChatIndex messages={messages} /> : ''}
+                {user && <ChatIndex messages={messages} />}
               </ul>
             </div>
-            <InputIndex user={user} newMessage={newMessage} setNewMessage={setNewMessage} handleSubmit={handleSubmit} />
+            <InputIndex
+              user={user}
+              newMessage={newMessage}
+              setNewMessage={setNewMessage}
+              handleSubmit={handleSubmit}
+            />
           </div>
         </div>
       </div>
