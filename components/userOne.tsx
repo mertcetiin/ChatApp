@@ -1,17 +1,12 @@
 "use client";
-import { useEffect, useState } from 'react';
 
 function UserOne({ message }: any) {
 
-    const [time, setTime] = useState(new Date());
+    const time = message.createdAt?.seconds ? new Date(message.createdAt.seconds * 1000) : null;
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setTime(new Date());
-        }, 1000)
-
-        return () => clearInterval(intervalId);
-    }, [])
+    if (!time) {
+        return null
+    }
 
     const hoursTime = time.getHours();
     const minutesTime = time.getMinutes();
