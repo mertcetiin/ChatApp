@@ -13,8 +13,17 @@ export default function Home() {
 
   const [newMessage, setNewMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [user, setUser] = useState(auth.currentUser);
 
-  const messagesRef = collection(db, 'messages')
+  const messagesRef = collection(db, 'messages');
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      setUser(authUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const queryMessages = query(messagesRef, orderBy('createdAt'))
@@ -27,10 +36,8 @@ export default function Home() {
     });
 
     return () => unsuscribe()
-  }, [messagesRef])
+  }, [])
 
-  const user = auth.currentUser;
-  const userName = user ? user.displayName : "Anonymous";
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -39,7 +46,7 @@ export default function Home() {
     await addDoc(messagesRef, {
       text: newMessage,
       createdAt: serverTimestamp(),
-      user: userName,
+      user: user ? user.displayName || "Anonymous" : "Anonymous",
     });
     setNewMessage('')
   }
@@ -49,10 +56,9 @@ export default function Home() {
       <div className="min-w-full border rounded mt-6">
         <div className="">
           <div className="w-full">
-            <HeaderIndex />
+            <HeaderIndex user={user} />
 
             <ProfileIndex />
-
             <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
               <ul className="space-y-2">
                 {user ? <ChatIndex messages={messages} /> : ''}

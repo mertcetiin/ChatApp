@@ -1,12 +1,11 @@
 "use client";
-import { useState, useEffect } from 'react'
 import { auth, provider } from '../lib/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { User, signInWithPopup, signOut } from 'firebase/auth';
+//import { useAuthState } from 'react-firebase-hooks/auth';
+import { signInWithPopup, signOut } from 'firebase/auth';
 
-function HeaderIndex() {
+function HeaderIndex({ user }: any) {
 
-    const [user] = useAuthState(auth);
+    // const [user] = useAuthState(auth);
 
     const signInWithGoogle = async () => {
         try {
@@ -19,6 +18,7 @@ function HeaderIndex() {
             console.error(err);
         }
     }
+
 
     // const [user, setUser] = useState<User | null>(null);
 

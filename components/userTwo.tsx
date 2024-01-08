@@ -21,7 +21,7 @@ function UserTwo({ message }: any) {
 
     return (
 
-        <div className="flex justify-start">
+        <div className="flex justify-end">
             <div className="relative max-w-xl px-4 py-2 text-gray-700 bg-gray-100 rounded shadow">
                 <span className="block">{message.text}</span>
                 <p className="ml-4 text-xs">{formattedHours}:{formattedMinutes}</p>
