@@ -1,13 +1,16 @@
 import UserTwo from './userTwo';
 import UserOne from './userOne';
+import { auth } from '@/lib/firebase';
 
 function ChatIndex({ messages }: any) {
+
+    const currentUser = auth.currentUser
 
     return (
         <div>
             {messages.map((message: any) => (
                 <div key={message.id}>
-                    {message.user === "user1" ? (
+                    {currentUser && message.uid === currentUser.uid ? (
                         <UserTwo message={message} />
                     ) : (
                         <UserOne message={message} />

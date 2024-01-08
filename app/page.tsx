@@ -26,6 +26,7 @@ export default function Home() {
     return () => unsubscribe();
   }, []);
 
+
   useEffect(() => {
     const queryMessages = query(messagesRef, orderBy('createdAt'))
 
@@ -46,11 +47,18 @@ export default function Home() {
 
     if (newMessage === '') return;
 
+    if (!auth.currentUser) {
+      console.error('User is not authenticated.');
+      return;
+    }
+
+    const { uid, displayName } = auth.currentUser
     try {
       await addDoc(messagesRef, {
         text: newMessage,
         createdAt: serverTimestamp(),
         user: user ? user.displayName || "Anonymous" : "Anonymous",
+        uid,
       });
       setNewMessage('')
     } catch (error) {
@@ -69,7 +77,7 @@ export default function Home() {
             <ProfileIndex user={user} />
             <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
               <ul className="space-y-2">
-                {user && <ChatIndex messages={messages} />}
+                {user && <ChatIndex messages={messages} user={user} />}
               </ul>
             </div>
             <InputIndex
