@@ -73,19 +73,20 @@ export default function Home() {
         <div className="">
           <div className="w-full">
             <HeaderIndex user={user} />
-
             <ProfileIndex user={user} />
             <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
               <ul className="space-y-2">
                 {user && <ChatIndex messages={messages} user={user} />}
               </ul>
             </div>
-            <InputIndex
-              user={user}
-              newMessage={newMessage}
-              setNewMessage={setNewMessage}
-              handleSubmit={handleSubmit}
-            />
+            <div className="lg:w-1/3 lg:mt-6">
+              <InputIndex
+                user={user}
+                newMessage={newMessage}
+                setNewMessage={setNewMessage}
+                handleSubmit={handleSubmit}
+              />
+            </div>
           </div>
         </div>
       </div>
