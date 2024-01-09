@@ -4,7 +4,7 @@ import { auth } from '@/lib/firebase';
 
 function ChatIndex({ messages }: any) {
 
-    const currentUser = auth.currentUser
+    const currentUser = auth.currentUser;
 
     return (
         <div>
