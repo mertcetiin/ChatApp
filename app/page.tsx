@@ -79,7 +79,7 @@ export default function Home() {
                 {user && <ChatIndex messages={messages} user={user} />}
               </ul>
             </div>
-            <div className="lg:w-1/3 lg:mt-6">
+            <div className="">
               <InputIndex
                 user={user}
                 newMessage={newMessage}
