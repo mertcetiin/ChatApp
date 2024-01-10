@@ -13,7 +13,7 @@ function UserTwo({ message, user }: any) {
     let formattedHours = hoursTime < 10 ? `0${hoursTime}` : hoursTime;
     let formattedMinutes = minutesTime < 10 ? `0${minutesTime}` : minutesTime;
 
-    const userName = user?.displayName || 'Anonymous';
+    const userName = message.user || 'Anonymous';
 
     return (
         <div className="flex mt-2 items-end">
@@ -29,8 +29,6 @@ function UserTwo({ message, user }: any) {
                 {userName ? userName[0] : ''}
             </div>
         </div>
-
-
     )
 }
 
