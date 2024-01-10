@@ -17,7 +17,7 @@ function HeaderIndex({ user }: any) {
     }
 
     return (
-        <div className="relative flex items-center justify-center p-3 border-b border-gray-300">
+        <div className="flex items-center space-x-2">
             <button onClick={toggleAuthentication} className="block ml-2 font-bold text-gray-600">
                 {user ? `Log out` : 'Log in'}
             </button>

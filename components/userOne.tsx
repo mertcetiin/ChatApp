@@ -1,5 +1,5 @@
 
-function UserOne({ message }: any) {
+function UserOne({ message, user }: any) {
 
     const time = message.createdAt?.seconds ? new Date(message.createdAt.seconds * 1000) : null;
 
@@ -13,12 +13,20 @@ function UserOne({ message }: any) {
     let formattedHours = hoursTime < 10 ? `0${hoursTime}` : hoursTime;
     let formattedMinutes = minutesTime < 10 ? `0${minutesTime}` : minutesTime;
 
-    return (
+    const userName = user?.displayName || 'Anonymous';
 
-        <div className="flex justify-start">
-            <div className={`relative max-w-xl px-4 py-2 text-gray-700 rounded shadow`}>
-                <span className="block">{message.text}</span>
-                <p className="float-left mt-1 text-xs">{formattedHours}:{formattedMinutes}</p>
+    return (
+        <div className="flex mt-2 items-end justify-end">
+            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
+                <div>
+                    <span className="px-4 py-2 text-sm rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
+                        {message.text}
+                        <p className="float-right mt-2 ml-3 text-xs text-blue-200">{formattedHours}:{formattedMinutes}</p>
+                    </span>
+                </div>
+            </div>
+            <div className="w-6 h-6 text-xs flex items-center justify-center rounded-full text-white bg-blue-600 order-2">
+                {userName ? userName[0] : ''}
             </div>
         </div>
     )

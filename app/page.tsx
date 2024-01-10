@@ -68,32 +68,27 @@ export default function Home() {
   }
 
   return (
-    <div className="container mx-auto">
-      <div className="min-w-full border rounded mt-6">
-        <div className="">
+    <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen">
 
-          <div className="w-full">
-            <HeaderIndex user={user} />
-            <ProfileIndex user={user} />
-            <div className="relative w-full p-6 overflow-y-auto h-[40rem] ">
-              <ul className="space-y-2">
-                {user && <ChatIndex messages={messages} user={user} />}
-              </ul>
-            </div>
-
-            <div className="">
-              <InputIndex
-                user={user}
-                newMessage={newMessage}
-                setNewMessage={setNewMessage}
-                handleSubmit={handleSubmit}
-              />
-            </div>
-
-          </div>
-
-        </div>
+      <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
+        <ProfileIndex user={user} />
+        <HeaderIndex user={user} />
       </div>
+
+      <div className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+        {user && <ChatIndex messages={messages} user={user} />}
+      </div>
+
+      <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
+        <InputIndex
+          user={user}
+          newMessage={newMessage}
+          setNewMessage={setNewMessage}
+          handleSubmit={handleSubmit}
+        />
+      </div>
+
     </div>
+
   )
 }
