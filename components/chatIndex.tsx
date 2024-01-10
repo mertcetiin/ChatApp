@@ -9,7 +9,7 @@ function ChatIndex({ messages }: any) {
     return (
         <div>
             {messages.map((message: any) => (
-                <div className='mt-2' key={message.id}>
+                <div key={message.id}>
                     {currentUser && message.uid === currentUser.uid ? (
                         <UserTwo message={message} />
                     ) : (

@@ -71,14 +71,16 @@ export default function Home() {
     <div className="container mx-auto">
       <div className="min-w-full border rounded mt-6">
         <div className="">
+
           <div className="w-full">
             <HeaderIndex user={user} />
             <ProfileIndex user={user} />
-            <div className="relative w-full p-6 overflow-y-auto h-[40rem]">
+            <div className="relative w-full p-6 overflow-y-auto h-[40rem] ">
               <ul className="space-y-2">
                 {user && <ChatIndex messages={messages} user={user} />}
               </ul>
             </div>
+
             <div className="">
               <InputIndex
                 user={user}
@@ -87,7 +89,9 @@ export default function Home() {
                 handleSubmit={handleSubmit}
               />
             </div>
+
           </div>
+
         </div>
       </div>
     </div>
