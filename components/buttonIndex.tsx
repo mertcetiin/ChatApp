@@ -2,7 +2,7 @@
 import { auth, provider } from '../lib/firebase';
 import { signInWithPopup, signOut } from 'firebase/auth';
 
-function HeaderIndex({ user }: any) {
+function ButtonIndex({ user }: any) {
 
     const toggleAuthentication = async () => {
         try {
@@ -18,11 +18,13 @@ function HeaderIndex({ user }: any) {
 
     return (
         <div className="flex items-center space-x-4 mr-4">
-            <button onClick={toggleAuthentication} className="block ml-2 font-bold text-gray-600">
+            <button
+                onClick={toggleAuthentication}
+                className="px-4 py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition duration-300 focus:outline-none focus:ring focus:border-blue-300">
                 {user ? `Log out` : 'Log in'}
             </button>
         </div>
     )
 }
 
-export default HeaderIndex;
+export default ButtonIndex;

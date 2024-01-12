@@ -1,5 +1,5 @@
 "use client"
-import HeaderIndex from "@/components/headerIndex";
+import ButtonIndex from "@/components/buttonIndex";
 import ProfileIndex from "@/components/profileIndex";
 import InputIndex from "@/components/inputIndex";
 import ChatIndex from "@/components/chatIndex";
@@ -72,7 +72,7 @@ export default function Home() {
 
       <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
         <ProfileIndex user={user} />
-        <HeaderIndex user={user} />
+        <ButtonIndex user={user} />
       </div>
 
       <div className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
@@ -87,7 +87,6 @@ export default function Home() {
           handleSubmit={handleSubmit}
         />
       </div>
-
     </div>
   )
 }

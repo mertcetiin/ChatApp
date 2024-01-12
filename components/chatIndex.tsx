@@ -16,6 +16,7 @@ function ChatIndex({ messages, user }: any) {
         }
     }, [messages]);
 
+
     return (
         <div ref={chatContainerRef} style={{ overflowY: 'auto' }}>
             {messages.map((message: any, uid: any) => (
