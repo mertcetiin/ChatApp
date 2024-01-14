@@ -2,6 +2,10 @@
 
 This project contains a simple chat application built using Next.js. Firebase is used for user authentication, and Firestore is used as the database.
 
+## Project Screenshot
+
+![image](https://github.com/mertcetiin/ChatApp/assets/102957602/1605bdcb-6646-4f12-bd9e-96fd4d6be46c)
+
 ## Getting Started
 
 1. Install project dependencies:
